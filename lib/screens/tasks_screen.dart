@@ -2,11 +2,23 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:todaydo_app/models/task.dart';
 import 'package:todaydo_app/screens/add_task_screen.dart';
 import 'package:todaydo_app/widgets/tasks_list.dart';
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
   const TasksScreen({super.key});
+
+  @override
+  State<TasksScreen> createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  List<Task> tasks = [
+    Task(name: 'go shopping'),
+    Task(name: 'by a gift'),
+    Task(name: 'repaire the car'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +86,7 @@ class TasksScreen extends StatelessWidget {
                     Radius.circular(20),
                   ),
                 ),
-                child: TasksList(),
+                child: TasksList(tasks),
               ),
             ),
           ],
